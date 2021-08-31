@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static  %}
+<html lang="en">
+	<head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+		<title>{% block title %} Home {% endblock %}</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+		{% include 'base/css.html' %}
+    </head>
+
+	<body>
+	{% include 'base/nav.html' %}
+	{% include 'base/messages.html' %}
+
+	<div id="page-container" style="min-height:100vh;">
+		{% block content %}
+		{% endblock %}
+	</div>	
+
+	{% block java_script %}
+	{% endblock %}
+
+    {% include 'base/footer.html' %}
+    {% include 'base/js.html' %}	
+	</body>
+</html>

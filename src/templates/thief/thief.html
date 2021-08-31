@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %} Thief Add {% endblock %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <form method="POST" class="uniForm" style="width:65%; align:center; margin: 0 auto; margin-top:35px;">
+        <h4 style="text-align:center;">Add Thief</h4>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <a href="{% url 'thief:victim_add' %}">Add victim </a>
+        <div class="d-grid" style="margin-top:10px;"><button class="btn btn-dark btn-lg " id="submitButton" type="submit">Submit</button></div>
+    </form>
+{% endblock %}
