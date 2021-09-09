@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %} اضافة عملية احتيال{% endblock %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+    <form method="POST" class="uniForm" style="width:65%; align:center; margin: 0 auto; margin-top:35px;  direction: rtl;">
+        <h4 style="text-align:center;">اضافة عملية احتيال</h4>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="d-grid" style="margin-top:10px;"><button class="btn btn-dark btn-lg " id="submitButton" type="submit">اضافة</button></div>
+    </form>
+{% endblock %}
+
+
+{% block java_script %}
+
+var elm = document.getElementById('id_outboard_transferred');
+var med = document.getElementById('div_id_mediator_ip');
+
+elm.onchange = function (event){
+    if (this.value == 'mediator') toggleElm('block');
+    else toggleElm('none');
+};
+
+function toggleElm(display){
+    med.style.display = display;
+}
+
+toggleElm('none');
+
+{% endblock %}
