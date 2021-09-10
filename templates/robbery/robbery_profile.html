@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %} Thief Detail {% endblock %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<section class="py-5 border-bottom">
+    <div class="container px-5 my-5 px-5">
+
+        <div class="text-center mb-5">
+            <h2 class="fw-bolder">معومات  عن السارق </h2>
+        </div>
+
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-6">
+                <div class="card mb-4">
+                    <div class="card-body p-4">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0"><i class="fas fa-user-secret fa-4x" style=" color: black;"></i></div>
+                            <div class="ms-4">
+                                <p class="mb-1">  اي بان السارق: {{ objects.first.gang_iban }}</p>
+                                <h6  style="color:red;">اجمالي عدد الضحايا: {{ count }}</h6>
+                                <h6  style="color:red;">اجمالي السرقة: {{ total }}</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mb-5">
+            <h2 class="fw-bolder">قائمة الضحايا</h2>
+        </div>
+
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-6">
+
+                {% for obj in objects %}
+                <div class="card mb-4">
+                    <div class="card-body p-4">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0"><i class="fas fa-user-injured fa-4x" style=" color: black;"></i></div>
+                            <div class="ms-4">
+                                <p class="mb-1">الاسم : {{ obj.victim_name }} </p>
+                                <h6 style="color:red">المبلغ الذي تمت سرقته: {{ obj.embezzled_amount }} </h6>
+                                <div class="small text-muted">رقم البطاقه الوطنيه: {{ obj.victim_national_id }}</div>
+                                <div class="small text-muted">رقم جوال: {{ obj.victim_phone_number }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="container">{% if  objects %} <a href="{% url 'robbery:robbery_profile_export_csv' objects.first.gang_iban %}">export csv</a> {% endif %}</div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
