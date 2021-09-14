@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %} نسحيل الدخول {% endblock %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+    <form method="POST" class="uniForm" style="width:65%; align:center; margin: 0 auto; margin-top:35px;  direction: rtl;">
+        <h4 style="text-align:center;">تسجيل الدخول</h4>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="d-grid" style="margin-top:10px;"><button class="btn btn-dark btn-lg " id="submitButton" type="submit">نسجيل</button></div>
+    </form>
+{% endblock %}
