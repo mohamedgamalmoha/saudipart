@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-amn!^e2&di=ibkt7u0-j61h(2o@c)!vsxmwiy=nf9$%2dtby(s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Styling django forms
 
