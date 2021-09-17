@@ -2,8 +2,8 @@ from django.db import models
 
 
 class HowWorks(models.Model):
-    title = models.CharField(max_length=150)
-    description = models.TextField()
+    title = models.CharField('عنوان',  max_length=250)
+    description = models.TextField('وصف')
 
     class Meta:
         verbose_name = 'كيف نعمل'
